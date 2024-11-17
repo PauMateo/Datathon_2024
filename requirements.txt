@@ -1,0 +1,8 @@
+PyQt6
+torch
+pandas
+numpy
+efficientnet_pytorch
+torchvision
+scikit-learn
+

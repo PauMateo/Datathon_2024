@@ -11,12 +11,14 @@ from PyQt6.QtWidgets import (
 )
 
 from custom_widgets.image_viewer import ImageViewer
+import dictionary_types as dic_types
 
 
 class DefineWidget(QFrame):
     compute = pyqtSignal()
     change_image = pyqtSignal()
     save_result = pyqtSignal()
+    set_item_class = pyqtSignal(str)
 
     def __init__(self) -> None:
         super().__init__()
@@ -34,8 +36,9 @@ class DefineWidget(QFrame):
 
         change_image.clicked.connect(self.changeImageH)
         self.options = QComboBox()
-        self.options.addItems(["T-shirt", "Trousers"])
+        self.options.addItems(dic_types.clothing_items.keys())
         self.options.setObjectName("mango")
+        self.options.currentTextChanged.connect(self.change_item_class)
         self.result = QTableWidget()
         self.result.horizontalHeader().hide()  # type: ignore
         self.result.setObjectName("mango")
@@ -88,3 +91,7 @@ class DefineWidget(QFrame):
     @pyqtSlot()
     def saveResult(self):
         self.save_result.emit()
+
+    @pyqtSlot(str)
+    def change_item_class(self, item_class: str):
+        self.set_item_class.emit(item_class)

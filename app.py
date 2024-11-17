@@ -4,16 +4,26 @@ import time
 from PyQt6.QtCore import pyqtSlot, QDir
 from PyQt6.QtWidgets import (
     QLabel,
-    QMenuBar,
     QStackedLayout,
     QWidget,
-    QFrame,
     QApplication,
     QVBoxLayout,
 )
 
 from custom_widgets.upload_widget import UploadWidget
 from custom_widgets.define_widget import DefineWidget
+from dictionary_types import class_filter, clothing_items
+from mango_net import MangoNet
+import torch
+from torch.utils.data import Dataset
+from torchvision.io import read_image
+from PIL import Image
+import pandas as pd
+import numpy as np
+from sklearn.preprocessing import LabelEncoder
+import os
+from torchvision import transforms
+import time
 
 
 class MangoLoco(QWidget):
@@ -22,6 +32,7 @@ class MangoLoco(QWidget):
 
         self.image_path = ""
         self.result: dict = {}
+        self.item_class: str = list(clothing_items.keys())[0]
 
         self.main_layout = QVBoxLayout()
         self.setLayout(self.main_layout)
@@ -39,6 +50,7 @@ class MangoLoco(QWidget):
         self.define_widget.compute.connect(self.compute_tags)
         self.define_widget.change_image.connect(self.set_upload_view)
         self.define_widget.save_result.connect(self.saveResult)
+        self.define_widget.set_item_class.connect(self.set_item_class)
         self.my_layout.addWidget(self.upload_widget)
         self.my_layout.addWidget(self.define_widget)
 
@@ -52,10 +64,15 @@ class MangoLoco(QWidget):
     def set_upload_view(self):
         self.my_layout.setCurrentWidget(self.upload_widget)
 
+    @pyqtSlot(str)
+    def set_item_class(self, item_class: str):
+        print("item class: " + item_class)
+        self.item_class = item_class
+
     @pyqtSlot()
     def compute_tags(self):
-        time.sleep(2)  # Aqui va la funció dels majetes!
-        self.result = {"Coll": "LLarg", "Llargada": "Curt", "Estil": "Guai"}
+        self.image_path()
+        self.result = 
         self.define_widget.showResult(self.result)
 
     @pyqtSlot()
