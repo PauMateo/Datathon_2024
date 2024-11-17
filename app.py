@@ -13,7 +13,7 @@ from PyQt6.QtWidgets import (
 from custom_widgets.upload_widget import UploadWidget
 from custom_widgets.define_widget import DefineWidget
 from dictionary_types import class_filter, clothing_items
-from mango_net import MangoNet
+from mangoCNN import MangoNet
 import torch
 from torch.utils.data import Dataset
 from torchvision.io import read_image
@@ -70,9 +70,44 @@ class MangoLoco(QWidget):
         self.item_class = item_class
 
     @pyqtSlot()
-    def compute_tags(self):
-        self.image_path()
-        self.result = 
+    def compute_tags(self): 
+        
+        self.img_labels = pd.read_csv('clean_data.csv')
+        self.label_encoders = {}
+        for col in self.img_labels:
+            le = LabelEncoder()
+            self.img_labels[col] = le.fit_transform(self.img_labels[col])  # Codifiquem les etiquetes
+            self.label_encoders[col] = le  # Guardem l'encoder per a futures prediccions
+
+        model = MangoNet(num_channels=11*(33+1),drop=0.5)
+        model.load_state_dict(torch.load('params4b2',map_location=torch.device('cpu')))
+        self.image_path
+        image = read_image(self.image_path).type(torch.float32)
+        image = torch.unsqueeze(image, 0)
+        output = model(image)
+        output = output.detach().numpy()
+        pred_labels = np.argmax(output, axis=1)
+
+        tags = self.label_encoders.keys()
+
+        d = {}
+        for i, t in enumerate(tags):
+            if i >= pred_labels.shape[1]: continue
+            encoder = self.label_encoders[t]
+         
+            label_for_tag = pred_labels[0, i]  # Assuming pred_labels has shape (1, 11)
+
+            # Use inverse_transform with the scalar label
+            
+            try:
+                d[t] = encoder.inverse_transform([label_for_tag])[0]
+            except:
+                d[t] = 'INVALID'
+            if d[t] == 'INVALID': d.pop(t)
+                
+
+        print(d)
+        self.result = class_filter(d, self.item_class)
         self.define_widget.showResult(self.result)
 
     @pyqtSlot()
@@ -91,7 +126,7 @@ def main():
     QDir.addSearchPath("icons", os.path.join(root, "icons"))
 
     with open("style/style.qss", "r") as f:
-        qapp.setStyleSheet(f.read())
+       qapp.setStyleSheet(f.read())
 
     mango_app = MangoLoco()
     mango_app.show()

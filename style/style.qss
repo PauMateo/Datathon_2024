@@ -8,7 +8,6 @@
     font: 12pt "Arial";
     background: white;
 }
-
 QFrame {
     background: white;
     margin: 0px;
@@ -49,6 +48,7 @@ QComboBox#mango {
     padding: 7px;
     border: 1px solid black;
     border-radius: 6px;
+    color: black;  /* Added text color */
 }
 
 QComboBox::down-arrow#mango {
@@ -62,29 +62,33 @@ QComboBox::drop-down::button#mango {
     margin: 2px;
     width: 20px
 }
+
 QComboBox::drop-down#mango {
     margin: 2px;
 }
 
-QComboBox::item:selected#mango
-{
-     background: #ffb17b;
+QComboBox::item:selected#mango {
+    background: #ffb17b;
+    color: black;  /* Text color for selected item */
 }
 
-QComboBox::item#mango {
-     color: black;
-     background-color: white;
+QComboBox::item {
+    color: black;  /* Text color for dropdown items */
+    background-color: white;
 }
 
-QComboBox#mango QAbstractView {
+QComboBox#mango QAbstractItemView {
     border: 2px solid black;
     border-radius: 6px;
+    background: white;
+    color: black;
 }
 
 QTableWidget#mango {
     border: 1px solid black;
     border-radius: 6px;
     padding: 2px;
+    color: black;  /* Added text color */
 }
 
 QTableWidget#mango QHeaderView::section {
@@ -93,6 +97,7 @@ QTableWidget#mango QHeaderView::section {
     border-right: 2px solid black;
     border-bottom: 2px solid black;
     padding: 5px;
+    color: black;  /* Added text color */
 }
 
 QTableWidget#mango QHeaderView {
@@ -103,8 +108,16 @@ QTableWidget::item {
     margin: 0px;
     border: 0px;
     padding: 4px;
+    color: black;  /* Added text color */
+
 }
 
+QTableWidget::item:selected {
+    background-color: #ffb17b;
+    color: black;
+}
+
+/* Rest of your scrollbar styling remains the same */
 QScrollBar:horizontal {
     border: none;
     background: #ffdcb4;

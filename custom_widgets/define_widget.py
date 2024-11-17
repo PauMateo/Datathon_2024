@@ -1,4 +1,4 @@
-from PyQt6.QtCore import Qt, pyqtSignal, pyqtSlot
+from PyQt6.QtCore import Qt, pyqtSignal, pyqtSlot, QSize
 from PyQt6.QtWidgets import (
     QComboBox,
     QFrame,
@@ -42,6 +42,7 @@ class DefineWidget(QFrame):
         self.result = QTableWidget()
         self.result.horizontalHeader().hide()  # type: ignore
         self.result.setObjectName("mango")
+
         self.result.setSizePolicy(
             QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Maximum
         )
@@ -78,10 +79,12 @@ class DefineWidget(QFrame):
         self.result.setColumnCount(1)
         i = 0
         self.result.setVerticalHeaderLabels(result.keys())
+        
         for key, value in result.items():
             item = QTableWidgetItem(value)
             item.setFlags(Qt.ItemFlag.ItemIsEnabled)
             self.result.setItem(i, 0, item)
+            self.result.setColumnWidth(0, 200)
             i += 1
 
     @pyqtSlot()
