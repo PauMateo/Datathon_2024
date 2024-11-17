@@ -4,6 +4,7 @@ from PyQt6.QtWidgets import (
     QFrame,
     QGridLayout,
     QPushButton,
+    QSizePolicy,
     QTableWidget,
     QTableWidgetItem,
     QVBoxLayout,
@@ -38,6 +39,9 @@ class DefineWidget(QFrame):
         self.result = QTableWidget()
         self.result.horizontalHeader().hide()  # type: ignore
         self.result.setObjectName("mango")
+        self.result.setSizePolicy(
+            QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Maximum
+        )
         self.save_bttn = QPushButton("Save Results (csv)")
         self.save_bttn.setObjectName("mango")
         self.save_bttn.clicked.connect(self.saveResult)

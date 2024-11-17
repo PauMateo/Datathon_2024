@@ -16,7 +16,7 @@ from custom_widgets.upload_widget import UploadWidget
 from custom_widgets.define_widget import DefineWidget
 
 
-class MangoLoco(QFrame):
+class MangoLoco(QWidget):
     def __init__(self) -> None:
         super().__init__()
 
@@ -25,7 +25,7 @@ class MangoLoco(QFrame):
 
         self.main_layout = QVBoxLayout()
         self.setLayout(self.main_layout)
-        self.content_widget = QFrame()
+        self.content_widget = QWidget()
         self.topbar = QLabel("Mango Loco")
         self.topbar.setObjectName("title")
         self.main_layout.addWidget(self.topbar)
