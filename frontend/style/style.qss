@@ -1,0 +1,103 @@
+/* #ffdcb4 (255,220,180)
+   #ffc37d (255,195,125)
+   #ffb17b (255,177,123)
+   #ffa466 (255,164,102)
+   #ff8518 (255,133,24) */
+
+#mango * {
+    font: 12pt "Arial";
+    background: white;
+}
+
+QFrame {
+    background: white;
+}
+
+QLabel#title {
+    background-color: #ff8518; 
+    padding: 5px;
+    color: white;
+    font: bold 20pt "Arial";
+}
+
+QPushButton#mango, QPushButton#mangobold{
+    color: white;
+    background: #ff8518;
+    border: 8px solid #ff8518;
+    border-radius: 6px;
+}
+
+QPushButton:hover#mango, QPushButton:hover#mangobold{
+    background: #ffb17b;
+    border-color: #ffb17b;
+}
+
+QPushButton:pressed#mango, QPushButton:pressed#mangobold{
+    background: #ffdcb4;
+    border-color: #ffdcb4;
+}
+
+QPushButton#mangobold {
+    font: bold 12pt "Arial";
+}
+
+QComboBox#mango {
+    background: white;
+    padding: 7px;
+    border: 1px solid black;
+    border-radius: 6px;
+}
+
+QComboBox::down-arrow#mango {
+    image: url(icons:icon-park-outline--down.svg);
+    width: 20px;
+}
+
+QComboBox::drop-down::button#mango {
+    background-color: white;
+    border-left: 1px solid black;
+    margin: 2px;
+    width: 20px
+}
+QComboBox::drop-down#mango {
+    margin: 2px;
+}
+
+QComboBox::item:selected#mango
+{
+     background: #ff8518;
+}
+
+QComboBox::item#mango {
+     color: black;
+     background-color: white;
+}
+
+QAbstractView#mango {
+    border: 8px, black;
+}
+
+QTableWidget#mango {
+    border: 1px solid black;
+    border-radius: 6px;
+    padding: 2px;
+}
+
+QTableWidget#mango QHeaderView::section {
+    background-color: white;
+    margin: 0px;
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+    padding: 5px;
+}
+
+QTableWidget#mango QHeaderView {
+    background-color: white;
+}
+
+
+QTableWidget::item {
+    margin: 0px;
+    border: 0px;
+    padding: 4px;
+}
