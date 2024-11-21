@@ -1,13 +1,6 @@
-# Datathon 2024 🥭🤖🥭🤖🥭
-
-Welcome to our GitHub repository featuring our solution to the Datathon FME 2024 Mango Challenge. We are a team of three data scientist and one computer scientist.
-
-The Mango Challenge demanded to make an specialization of a tagging model to identify clothing characteristics. We have used the pre-trained model EfficientNet-B2 with a modified last layer and backpropagation . Also they demanded a prototype of an app for their designers to tag de products and we have delivered using the popular PyQt6 framework.
-https://www.kaggle.com/t/6658f489d3d8447dba8d0c04196cfd07
-
 # Datathon FME 2024 - Product Attribute Prediction
 
-This repository contains my team's solution to the Mango's challenge: **Product Attribute Prediction Challenge**, which aims to automate the process of extracting design attributes from product images and metadata. By leveraging machine learning, the solution streamlines the creation of comprehensive product sheets, ensuring data quality, consistency, and efficiency.  
+This repository contains my team's solution to the [Mango's challenge](https://www.kaggle.com/t/6658f489d3d8447dba8d0c04196cfd07)🥭: **Product Attribute Prediction Challenge**, which aims to automate the process of extracting design attributes from product images and metadata. By leveraging machine learning, the solution streamlines the creation of comprehensive product sheets, ensuring data quality, consistency, and efficiency.  
 
 ---
 
@@ -17,9 +10,8 @@ This repository contains my team's solution to the Mango's challenge: **Product 
 - [Features](#features)  
 - [Tech Stack](#tech-stack)  
 - [Installation](#installation)  
-- [Usage](#usage)  
-- [File Structure](#file-structure)  
-- [Acknowledgements](#acknowledgements)  
+- [Usage](#usage)
+- [Team](#team)  
 
 ---
 
@@ -89,28 +81,11 @@ Our solution uses **Transfer Learning** with the **EfficientNetB2** architecture
 3. View predicted attributes for the product in the GUI.
 4. Export predictions if needed for further use.
 
+---
 
-## File structure
-```graphql
-mango-attribute-prediction/  
-│  
-├── custom_widgets/ 
-├── icons/
-├── style/               # Style files
-├── test_assets/         # Support files 
-│  
-├── MangoLocoPrediction.csv  # Predictions obtained from the test dataset
-│  
-├── params4b2            # Coefficnets of our trained model
-│    
-├── Mango_CNN.ipynb      # Defining and training of the CNN  
-│  
-├── utils/               # Eines auxiliars per preprocessar i avaluar dades  
-│   └── dictionary_types.py  # Definició de tipus de diccionari per atributs  
-│  
-├── app.py               # GUI script
-├── requirements.txt
-├── README.md
-└── LICENSE
-
+## Team
+- [Pau Mateo](https://github.com/PauMateo)
+- [Pau Fernández](https://github.com/gbg4812)
+- [Guillem Baldi](https://github.com/guillempastor1)
+- [Guillem Pastor](https://github.com/PauFdz)
     
