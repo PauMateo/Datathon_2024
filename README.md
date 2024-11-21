@@ -92,14 +92,25 @@ Our solution uses **Transfer Learning** with the **EfficientNetB2** architecture
 
 ## File structure
 ```graphql
-    product-attribute-prediction/  
-    │  
-    ├── data/               # Dataset files  
-    ├── models/             # Saved model weights and training scripts  
-    ├── gui/                # PyQT GUI components  
-    ├── utils/              # Helper scripts for preprocessing and evaluation  
-    ├── main.py             # Entry point for the application  
-    ├── requirements.txt    # List of dependencies  
-    ├── README.md           # Project documentation  
-    └── LICENSE             # License file  
+mango-attribute-prediction/  
+│  
+├── custom_widgets/ 
+├── icons/
+├── style/               # Style files
+├── test_assets/         # Support files 
+│  
+├── MangoLocoPrediction.csv  # Predictions obtained from the test dataset
+│  
+├── params4b2            # Coefficnets of our trained model
+│    
+├── Mango_CNN.ipynb      # Defining and training of the CNN  
+│  
+├── utils/               # Eines auxiliars per preprocessar i avaluar dades  
+│   └── dictionary_types.py  # Definició de tipus de diccionari per atributs  
+│  
+├── app.py               # GUI script
+├── requirements.txt
+├── README.md
+└── LICENSE
+
     
