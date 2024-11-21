@@ -81,6 +81,12 @@ Our solution uses **Transfer Learning** with the **EfficientNetB2** architecture
 3. View predicted attributes for the product in the GUI.
 4. Export predictions if needed for further use.
 
+Here is an overview of the aplication once you have loaded a file and computed it's attributes:
+<p align="center">
+  <img src="GUI_example.png" width="500" height="350">
+</p>
+
+
 ---
 
 ## Team
